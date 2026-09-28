@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>კატების ჯიშების სამყარო | Cat Breeds Guide</title>
+  <meta name="description" content="აღმოაჩინეთ კატების ყველაზე პოპულარული და უნიკალური ჯიშები, მათი ხასიათი, მოვლის წესები და თავისებურებები.">
+  <meta name="keywords" content="კატები, კატების ჯიშები, მეინ კუნი, ბრიტანული, სფინქსი, კატის მოვლა, შინაური ცხოველები">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+
+  <!-- Google Fonts: Noto Sans Georgian & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <!-- Background Glow & Shapes -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-cat"></i></span>
+        <div class="logo-text">
+          <span class="brand-title">ფისოპედია</span>
+          <span class="brand-subtitle">კატების ჯიშების ენციკლოპედია</span>
+        </div>
+      </a>
+
+      <nav class="header-nav">
+        <button id="themeToggleBtn" class="nav-icon-btn" title="თემის შეცვლა" aria-label="თემის შეცვლა">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="favoritesOpenBtn" class="nav-pill-btn" aria-label="რჩეულები">
+          <i class="fa-solid fa-heart"></i>
+          <span>რჩეულები</span>
+          <span id="favCountBadge" class="badge">0</span>
+        </button>
+        <button id="quizOpenBtn" class="cta-nav-btn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>ტესტი: იპოვე შენი კატა</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-paw"></i> გაიცანით 12+ საოცარი ჯიში
+      </div>
+      <h1 class="hero-title">
+        აღმოაჩინე შენი იდეალური <span class="gradient-text">ფუმფულა მეგობარი</span>
+      </h1>
+      <p class="hero-description">
+        დეტალური გზამკვლევი კატების ჯიშების, მათი უნიკალური ხასიათის, მოვლის თავისებურებებისა და ისტორიის შესახებ ქართულ ენაზე.
+      </p>
+
+      <!-- Quick Action Buttons -->
+      <div class="hero-actions">
+        <button id="randomBreedBtn" class="btn btn-secondary">
+          <i class="fa-solid fa-shuffle"></i> შემთხვევითი ჯიში
+        </button>
+        <a href="#breedsCatalog" class="btn btn-primary">
+          <i class="fa-solid fa-magnifying-glass"></i> კატალოგის დათვალიერება
+        </a>
+      </div>
+
+      <!-- Quick Stats Counter -->
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-number" id="totalBreedsStat">12</span>
+          <span class="stat-label">ჯიში კატალოგში</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">ქართულ ენაზე</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-card">
+          <span class="stat-number">4+</span>
+          <span class="stat-label">კატეგორია და ფილტრი</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Search Toolbar Section -->
+  <section id="breedsCatalog" class="catalog-section">
+    <div class="container">
+      <div class="toolbar-wrapper glass-card">
+        <!-- Search Input -->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            id="breedSearchInput" 
+            placeholder="მოძებნე ჯიშის სახელით, ქვეყნით ან ხასიათით..."
+            autocomplete="off"
+          >
+          <button id="clearSearchBtn" class="clear-btn hidden" title="გასუფთავება">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Filter Pills & Sorting -->
+        <div class="toolbar-controls">
+          <div class="filter-pills" id="filterPillsContainer">
+            <button class="pill active" data-filter="all">ყველა</button>
+            <button class="pill" data-filter="short">მოკლებეწვიანი</button>
+            <button class="pill" data-filter="long">გრძელბეწვიანი</button>
+            <button class="pill" data-filter="hairless">უმბეწვო / სფინქსი</button>
+            <button class="pill" data-filter="calm">მშვიდი და ალერსიანი</button>
+            <button class="pill" data-filter="playful">აქტიური და მოთამაშე</button>
+          </div>
+
+          <div class="sort-wrapper">
+            <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> დალაგება:</label>
+            <select id="sortSelect">
+              <option value="popular">პოპულარობით</option>
+              <option value="nameAsc">სახელით (ა - ჰ)</option>
+              <option value="activityDesc">აქტიურობით</option>
+              <option value="affectionDesc">ალერსიანობით</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filters Summary & Result Count -->
+      <div class="catalog-meta">
+        <div class="results-count" id="resultsCount">ნაჩვენებია <strong id="matchCount">12</strong> ჯიში</div>
+        <button id="resetFiltersBtn" class="reset-link hidden">
+          <i class="fa-solid fa-rotate-left"></i> ფილტრების გაუქმება
+        </button>
+      </div>
+
+      <!-- Breeds Cards Grid -->
+      <div class="breeds-grid" id="breedsGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- No Results State -->
+      <div id="noResultsState" class="no-results hidden">
+        <div class="empty-icon"><i class="fa-solid fa-cat"></i></div>
+        <h3>ჯიში ვერ მოიძებნა</h3>
+        <p>სცადეთ სხვა საძიებო სიტყვა ან მოხსენით არჩეული ფილტრები.</p>
+        <button id="emptyResetBtn" class="btn btn-primary">ფილტრების გასუფთავება</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Breed Matcher Quiz Modal -->
+  <div id="quizModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="quizModalTitle">
+    <div class="modal-content glass-card modal-quiz">
+      <button class="modal-close-btn" id="closeQuizBtn" aria-label="დახურვა">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="quizIntroState">
+        <div class="quiz-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> ინტერაქტიული ტესტი</div>
+        <h2 id="quizModalTitle">რომელი კატის ჯიში შეგეფერება ყველაზე მეტად?</h2>
+        <p class="quiz-subtext">უპასუხე 4 მარტივ კითხვას შენი ცხოვრების სტილისა და პრეფერენციების შესახებ, და ჩვენ შეგირჩევთ იდეალურ ფისოს!</p>
+        <button id="startQuizBtn" class="btn btn-primary btn-large">
+          <i class="fa-solid fa-play"></i> ტესტის დაწყება
+        </button>
+      </div>
+
+      <div id="quizQuestionsState" class="hidden">
+        <div class="quiz-progress-bar">
+          <div class="progress-fill" id="quizProgressBar"></div>
+        </div>
+        <div class="quiz-step-info">
+          კითხვა <span id="quizCurrentStep">1</span> / 4
+        </div>
+        <h3 id="quizQuestionText" class="quiz-question-title">კითხვა</h3>
+        <div class="quiz-options-list" id="quizOptionsContainer">
+          <!-- Dynamic quiz choices -->
+        </div>
+      </div>
+
+      <div id="quizResultState" class="hidden">
+        <div class="quiz-badge success"><i class="fa-solid fa-trophy"></i> შედეგი მზადაა!</div>
+        <h2 class="quiz-result-title">თქვენი იდეალური კომპანიონია:</h2>
+        <div class="quiz-result-card" id="quizResultCard">
+          <!-- Dynamic card preview -->
+        </div>
+        <div class="quiz-result-actions">
+          <button id="viewQuizResultDetailsBtn" class="btn btn-primary">
+            <i class="fa-solid fa-eye"></i> ჯიშის დეტალების ნახვა
+          </button>
+          <button id="retakeQuizBtn" class="btn btn-secondary">
+            <i class="fa-solid fa-rotate-right"></i> თავიდან გავლა
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Breed View Modal -->
+  <div id="detailModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="detailBreedTitle">
+    <div class="modal-content glass-card modal-detail">
+      <button class="modal-close-btn" id="closeDetailBtn" aria-label="დახურვა">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="detail-layout" id="detailModalBody">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorites Drawer Modal -->
+  <div id="favoritesDrawer" class="drawer-overlay hidden">
+    <div class="drawer-content glass-card">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-heart text-danger"></i> შენახული რჩეულები (<span id="drawerCount">0</span>)</h3>
+        <button class="modal-close-btn" id="closeDrawerBtn" aria-label="დახურვა">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="drawer-body" id="favoritesListContainer">
+        <!-- Favorites dynamic list -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Fun Cat Facts Banner -->
+  <section class="facts-section">
+    <div class="container">
+      <div class="facts-card glass-card">
+        <div class="facts-icon">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <div class="facts-content">
+          <h4>იცოდით, რომ?</h4>
+          <p id="funFactText">კატები დღე-ღამის დაახლოებით 70%-ს ძილში ატარებენ, რაც ნიშნავს, რომ 9 წლის კატას მხოლოდ 3 წელი აქვს გატარებული ფხიზლად!</p>
+        </div>
+        <button id="nextFactBtn" class="btn btn-icon" title="სხვა საინტერესო ფაქტი">
+          <i class="fa-solid fa-arrow-rotate-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-icon"><i class="fa-solid fa-cat"></i></span>
+          <span class="brand-title">ფისოპედია</span>
+        </div>
+        <p>შეუცვლელი მეგზური ყველა კატის მოყვარულისთვის.</p>
+      </div>
+      <div class="footer-links">
+        <p>შექმნილია სიყვარულით 🐾 კატების მოყვარულთათვის</p>
+        <span class="copyright">© 2026 ფისოპედია. ყველა უფლება დაცულია.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
